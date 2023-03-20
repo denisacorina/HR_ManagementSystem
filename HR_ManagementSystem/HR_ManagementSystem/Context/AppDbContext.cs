@@ -13,7 +13,7 @@ namespace HR_ManagementSystem.Context
 
         protected override void OnModelCreating(ModelBuilder model)
         {
-           
+            AddDefaultData(model);
 
         }
 
@@ -22,6 +22,17 @@ namespace HR_ManagementSystem.Context
         public DbSet<Address> Addresss { get; set; }
         public DbSet<BankInfo> BankInfos { get; set; }
         public DbSet<Report> Reports { get; set; }
+
+
+        private static void AddDefaultData(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Employee>().HasData(
+                new Employee { EmployeeId = 1, Email = "employee1@gmail.com", Password = "ABcd1234", HireDate = DateTime.Now, TerminationDate = null, ManagerName = "Andrei", IsHr = false  }
+                
+              );
+
+      
+        }
 
 
     }

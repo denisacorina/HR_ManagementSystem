@@ -4,6 +4,7 @@ using HR_ManagementSystem.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HR_ManagementSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230320153014_AddDefautData_Try1")]
+    partial class AddDefautData_Try1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,11 +135,10 @@ namespace HR_ManagementSystem.Migrations
                         {
                             EmployeeId = 1,
                             Email = "employee1@gmail.com",
-                            HireDate = new DateTime(2023, 3, 20, 17, 35, 33, 176, DateTimeKind.Local).AddTicks(1701),
+                            HireDate = new DateTime(2023, 3, 20, 17, 30, 14, 573, DateTimeKind.Local).AddTicks(9955),
                             IsHr = false,
                             ManagerName = "Andrei",
-                            Password = "ABcd1234",
-                            PersonalInfoID = 1
+                            Password = "ABcd1234"
                         });
                 });
 
