@@ -1,8 +1,11 @@
-﻿namespace HR_ManagementSystem.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace HR_ManagementSystem.Models
 {
     public class Address
     {
-        public int Id { get; set; }
+        [Key]
+        public int AddressId { get; set; }
         public string StreetAddress { get; set; }
         public string City { get; set; }
         public string County { get; set; }
