@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HR_ManagementSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230320145811_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20230320163718_new2")]
+    partial class new2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -87,6 +87,14 @@ namespace HR_ManagementSystem.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BankInfos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BankName = "Raiffeisen Bank",
+                            Iban = "1234566543"
+                        });
                 });
 
             modelBuilder.Entity("HR_ManagementSystem.Models.Employee", b =>
@@ -129,6 +137,18 @@ namespace HR_ManagementSystem.Migrations
                     b.HasIndex("PersonalInfoID");
 
                     b.ToTable("Employees");
+
+                    b.HasData(
+                        new
+                        {
+                            EmployeeId = 1,
+                            Email = "employee1@gmail.com",
+                            HireDate = new DateTime(2023, 3, 20, 18, 37, 18, 126, DateTimeKind.Local).AddTicks(8246),
+                            IsHr = false,
+                            ManagerName = "Andrei",
+                            Password = "ABcd1234",
+                            PersonalInfoID = 1
+                        });
                 });
 
             modelBuilder.Entity("HR_ManagementSystem.Models.PersonalInfo", b =>
@@ -175,6 +195,19 @@ namespace HR_ManagementSystem.Migrations
                     b.HasIndex("BankInfoId");
 
                     b.ToTable("PersonalInfos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BankInfoId = 1,
+                            CNP = "123456789865434567",
+                            DateOfBirth = new DateTime(1990, 6, 10, 15, 24, 16, 0, DateTimeKind.Unspecified),
+                            FirstName = "Alexandru",
+                            Gender = "M",
+                            LastName = "Xyz",
+                            PhoneNumber = "0712345566"
+                        });
                 });
 
             modelBuilder.Entity("HR_ManagementSystem.Models.Report", b =>
@@ -184,6 +217,17 @@ namespace HR_ManagementSystem.Migrations
 
                     b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("ReportDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReportName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReportType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ReportId");
 

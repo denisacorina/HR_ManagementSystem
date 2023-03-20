@@ -85,6 +85,20 @@ namespace HR_ManagementSystem.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BankInfos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BankName = "Raiffeisen Bank",
+                            Iban = "1234566543"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BankName = "Raiffeisen Bank",
+                            Iban = "234567654"
+                        });
                 });
 
             modelBuilder.Entity("HR_ManagementSystem.Models.Employee", b =>
@@ -127,6 +141,28 @@ namespace HR_ManagementSystem.Migrations
                     b.HasIndex("PersonalInfoID");
 
                     b.ToTable("Employees");
+
+                    b.HasData(
+                        new
+                        {
+                            EmployeeId = 1,
+                            Email = "employee1@gmail.com",
+                            HireDate = new DateTime(2023, 3, 20, 19, 15, 40, 559, DateTimeKind.Local).AddTicks(5083),
+                            IsHr = false,
+                            ManagerName = "Andrei",
+                            Password = "ABcd1234",
+                            PersonalInfoID = 1
+                        },
+                        new
+                        {
+                            EmployeeId = 2,
+                            Email = "employee2@gmail.com",
+                            HireDate = new DateTime(2023, 3, 20, 19, 15, 40, 559, DateTimeKind.Local).AddTicks(5118),
+                            IsHr = true,
+                            ManagerName = "Denisa",
+                            Password = "ABcd1234",
+                            PersonalInfoID = 2
+                        });
                 });
 
             modelBuilder.Entity("HR_ManagementSystem.Models.PersonalInfo", b =>
@@ -173,6 +209,29 @@ namespace HR_ManagementSystem.Migrations
                     b.HasIndex("BankInfoId");
 
                     b.ToTable("PersonalInfos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BankInfoId = 1,
+                            CNP = "123456789865434567",
+                            DateOfBirth = new DateTime(1990, 6, 10, 15, 24, 16, 0, DateTimeKind.Unspecified),
+                            FirstName = "Alexandru",
+                            Gender = "M",
+                            LastName = "Xyz",
+                            PhoneNumber = "0712345566"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CNP = "123446775434567",
+                            DateOfBirth = new DateTime(1989, 4, 4, 15, 24, 16, 0, DateTimeKind.Unspecified),
+                            FirstName = "Andreea",
+                            Gender = "F",
+                            LastName = "Zyx",
+                            PhoneNumber = "0714345566"
+                        });
                 });
 
             modelBuilder.Entity("HR_ManagementSystem.Models.Report", b =>

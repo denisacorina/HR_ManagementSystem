@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HR_ManagementSystem.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class @new : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,6 +44,9 @@ namespace HR_ManagementSystem.Migrations
                 columns: table => new
                 {
                     ReportId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ReportName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ReportType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ReportDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EmployeeId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -129,6 +132,16 @@ namespace HR_ManagementSystem.Migrations
                         principalColumn: "ReportId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "PersonalInfos",
+                columns: new[] { "Id", "AddressId", "BankInfoId", "CNP", "DateOfBirth", "FirstName", "Gender", "LastName", "PhoneNumber" },
+                values: new object[] { 1, null, null, "123456789865434567", new DateTime(1990, 6, 10, 15, 24, 16, 0, DateTimeKind.Unspecified), "Alexandru", "M", "Xyz", "0712345566" });
+
+            migrationBuilder.InsertData(
+                table: "Employees",
+                columns: new[] { "EmployeeId", "Email", "HireDate", "IsHr", "ManagerName", "Password", "PersonalInfoID", "ReportId", "TerminationDate" },
+                values: new object[] { 1, "employee1@gmail.com", new DateTime(2023, 3, 20, 18, 31, 28, 416, DateTimeKind.Local).AddTicks(5623), false, "Andrei", "ABcd1234", 1, null, null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_EmployeeReport_ReportsReportId",
