@@ -85,6 +85,14 @@ namespace HR_ManagementSystem.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BankInfos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BankName = "Raiffeisen Bank",
+                            Iban = "1234566543"
+                        });
                 });
 
             modelBuilder.Entity("HR_ManagementSystem.Models.Employee", b =>
@@ -133,7 +141,7 @@ namespace HR_ManagementSystem.Migrations
                         {
                             EmployeeId = 1,
                             Email = "employee1@gmail.com",
-                            HireDate = new DateTime(2023, 3, 20, 17, 35, 33, 176, DateTimeKind.Local).AddTicks(1701),
+                            HireDate = new DateTime(2023, 3, 20, 18, 37, 18, 126, DateTimeKind.Local).AddTicks(8246),
                             IsHr = false,
                             ManagerName = "Andrei",
                             Password = "ABcd1234",
@@ -185,6 +193,19 @@ namespace HR_ManagementSystem.Migrations
                     b.HasIndex("BankInfoId");
 
                     b.ToTable("PersonalInfos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BankInfoId = 1,
+                            CNP = "123456789865434567",
+                            DateOfBirth = new DateTime(1990, 6, 10, 15, 24, 16, 0, DateTimeKind.Unspecified),
+                            FirstName = "Alexandru",
+                            Gender = "M",
+                            LastName = "Xyz",
+                            PhoneNumber = "0712345566"
+                        });
                 });
 
             modelBuilder.Entity("HR_ManagementSystem.Models.Report", b =>

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HR_ManagementSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230320153533_AddDefautData_Try2")]
-    partial class AddDefautData_Try2
+    [Migration("20230320163128_new")]
+    partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -135,7 +135,7 @@ namespace HR_ManagementSystem.Migrations
                         {
                             EmployeeId = 1,
                             Email = "employee1@gmail.com",
-                            HireDate = new DateTime(2023, 3, 20, 17, 35, 33, 176, DateTimeKind.Local).AddTicks(1701),
+                            HireDate = new DateTime(2023, 3, 20, 18, 31, 28, 416, DateTimeKind.Local).AddTicks(5623),
                             IsHr = false,
                             ManagerName = "Andrei",
                             Password = "ABcd1234",
@@ -187,6 +187,18 @@ namespace HR_ManagementSystem.Migrations
                     b.HasIndex("BankInfoId");
 
                     b.ToTable("PersonalInfos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CNP = "123456789865434567",
+                            DateOfBirth = new DateTime(1990, 6, 10, 15, 24, 16, 0, DateTimeKind.Unspecified),
+                            FirstName = "Alexandru",
+                            Gender = "M",
+                            LastName = "Xyz",
+                            PhoneNumber = "0712345566"
+                        });
                 });
 
             modelBuilder.Entity("HR_ManagementSystem.Models.Report", b =>
