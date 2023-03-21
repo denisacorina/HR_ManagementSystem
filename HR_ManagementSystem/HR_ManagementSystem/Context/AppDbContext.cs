@@ -63,7 +63,7 @@ namespace HR_ManagementSystem.Context
                     Password = "ABcd1234",
                     HireDate = DateTime.Now,
                     ManagerName = "Andrei",
-                    IsHr = false,
+                    IsHr = true,
                     PersonalInfoID = 1
                 },
                 new Employee
